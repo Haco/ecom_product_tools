@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-12T16:38:02Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>Accessory Title</source>
+			</trans-unit>
+			<trans-unit id="article_numbers.description">
+				<source>Set article numbers. Separated by linebreaks.</source>
+			</trans-unit>
+			<trans-unit id="teaser.description">
+				<source>Teaser as description and is also used as hint for the configurator part.</source>
+			</trans-unit>
+			<trans-unit id="short_description.description">
+				<source>Only for configurator part. Shown as text in the part selector.</source>
+			</trans-unit>
+			<trans-unit id="images.description">
+				<source>Multiple images calls the lightbox. First image used as preview image. (For the configurator: Only the first image is used).</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

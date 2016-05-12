@@ -370,6 +370,15 @@ class Accessory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Get the badges as bit
+     * @return int
+     */
+    public function getBadgesBit()
+    {
+        return $this->badges;
+    }
+
+    /**
      * @param integer $badges
      */
     public function setBadges($badges)

@@ -53,6 +53,8 @@ $TCA[ 'tt_content' ][ 'types' ][ 'list' ][ 'subtypes_addlist' ][ 'ecomproducttoo
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_product', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_product.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_productdivision', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_productdivision.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_productcategory', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_productcategory.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_accessory', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_accessory.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_accessorycategory', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_accessorycategory.xlf');
 
 // Add Sprite Icons for different record types (visual distinction)
 $resourcePath = 'EXT:ecom_product_tools/Resources/Public/';
