@@ -6,7 +6,7 @@
 		<!-- Cover Icon -->
 		<div class="app-lib-app-qv-cover">
             <div class="app-lib-app-qv-card-overlay {f:if(condition: iterator.isEven, then: 'even', else: 'odd')}" style="{inlineStlye}">
-                <f:if condition="{product.linkToPage}"><a href="{f:uri.typolink(parameter: product.linkToPage)}"></a></f:if>
+                <f:if condition="{product.linkToPage}"><a class="app-lib-overlay-card-link" href="{f:uri.typolink(parameter: product.linkToPage)}">{product.title}</a></f:if>
                 <h5>{product.title}</h5>
                 <small>
                     <p>
@@ -15,9 +15,11 @@
                         </f:format.crop>
                     </p>
                 </small>
-                <f:if condition="{product.linkToPage}">
-                    <strong><i class="fa fa-caret-right fa-lg"></i>  <f:translate id="views.list.detailLinkTitle" extensionName="app_library" /></strong>
-                </f:if>
+                <p>
+                    <f:if condition="{product.linkToPage}">
+                        <f:link.typolink parameter="{product.linkToPage}"><strong><span class="fa fa-caret-right fa-lg"></span> <f:translate id="views.list.detailLinkTitle" extensionName="app_library" /></strong></f:link.typolink>
+                    </f:if>
+                </p>
             </div>
 			<div class="app-lib-app-qv-cover-outer-align">
 				<div class="app-lib-app-qv-cover-inner-align">

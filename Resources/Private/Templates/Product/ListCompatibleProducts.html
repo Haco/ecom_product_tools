@@ -6,6 +6,21 @@
 			<f:for each="{products}" as="product" iteration="iterator"><f:render partial="Product/Card" arguments="{product: product, iterator: iterator}" /></f:for>
 		</div>
 		<div class="clearfix"></div>
-		<script type="text/javascript" language="JavaScript">$(function(){var i=$(".app-lib-app-qv-card");i.on("mouseover",function(){$(".app-lib-app-qv-card-overlay").stop(!0,!1).fadeOut(200),$(this).find(".app-lib-app-qv-card-overlay").first().stop(!0,!1).fadeIn(200)}),i.on("mouseout",function(){$(".app-lib-app-qv-card-overlay").stop(!0,!1).fadeOut(200)})});</script>
+		<script type="text/javascript" language="JavaScript">
+            $(function() {
+                var i = $(".app-lib-app-qv-card");
+                i.on('click', function() {
+                    href = $(this).find('a.app-lib-overlay-card-link').attr('href');
+                    if (href) {
+                        window.location = href;
+                    }
+                });
+                i.on("mouseover", function() {
+                    $(".app-lib-app-qv-card-overlay").stop(!0, !1).fadeOut(200), $(this).find(".app-lib-app-qv-card-overlay").first().stop(!0, !1).fadeIn(200)
+                }), i.on("mouseout", function() {
+                    $(".app-lib-app-qv-card-overlay").stop(!0, !1).fadeOut(200)
+                })
+            });
+        </script>
 	</f:if>
 </f:section>
