@@ -133,6 +133,10 @@
 				<source>No files found!</source>
 				<target>Nessun file rilevato.</target>
 			</trans-unit>
+			<trans-unit id="artno" xml:space="preserve">
+                <source>Art.-No.</source>
+                <target>Numero di articolo</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

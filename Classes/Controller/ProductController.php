@@ -91,7 +91,7 @@ class ProductController extends ExtensionController
             foreach ($categories as $uid) {
                 /** @var Model\AccessoryCategory $category */
                 if ($category = $this->accessoryCategoryRepository->findByUid($uid)) {
-                    $category->setAccessories($this->accessoryRepository->findByCategoryAndList($category, $this->settings['accessories'], true));
+                    $category->setAccessories($this->accessoryRepository->findByCategoryAndList($category, $this->settings['accessories']));
                     $assign[] = $category;
                 }
             }

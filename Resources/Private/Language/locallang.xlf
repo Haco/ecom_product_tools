@@ -119,6 +119,9 @@
 			<trans-unit id="dc.nofiles" xml:space="preserve">
 				<source>No files found!</source>
 			</trans-unit>
+			<trans-unit id="artno" xml:space="preserve">
+                <source>Art.-No.</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

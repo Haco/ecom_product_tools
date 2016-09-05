@@ -117,6 +117,10 @@
 				<source>No files found!</source>
 				<target>Geen bestanden gevonden!</target>
 			</trans-unit>
+			<trans-unit id="artno" xml:space="preserve">
+                <source>Art.-No.</source>
+                <target>Artikelnummer</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

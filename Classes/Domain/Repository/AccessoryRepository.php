@@ -37,12 +37,14 @@ class AccessoryRepository extends AbstractRepository
     /**
      * @param \S3b0\EcomProductTools\Domain\Model\AccessoryCategory $category
      * @param string                                                $list
+     * @param bool                                                  $respectSysLanguage
      *
      * @return array
      */
-    public function findByCategoryAndList(\S3b0\EcomProductTools\Domain\Model\AccessoryCategory $category, $list = '')
+    public function findByCategoryAndList(\S3b0\EcomProductTools\Domain\Model\AccessoryCategory $category, $list = '', $respectSysLanguage = false)
     {
         $query = $this->createQuery();
+        $query->setQuerySettings($query->getQuerySettings()->setRespectSysLanguage($respectSysLanguage));
 
         if ($uidCollection = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $list, true)) {
             $sortingArray = array_flip($uidCollection);

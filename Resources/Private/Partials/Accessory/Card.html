@@ -51,7 +51,7 @@
 			<p>{accessory.teaser -> f:format.html()}</p>
 			<f:if condition="{accessory.articleNumbers}">
 				<p><f:for each="{accessory.articleNumbers}" as="articleNumber">
-					<small><span style="font-weight: bold; ">Art.-No.:</span> {articleNumber}</small><br />
+					<small><strong><f:translate id="artno" />: </strong> {articleNumber}</small><br />
 				</f:for></p>
 			</f:if>
 			<f:if condition="{accessory.files}">

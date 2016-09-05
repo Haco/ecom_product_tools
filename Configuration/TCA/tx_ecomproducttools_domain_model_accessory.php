@@ -33,7 +33,7 @@ return [
     'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, short_description, article_numbers, images, videos, link, link_title, badges, accessory_category, files'],
     'types'     => [
         '1' => [
-            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, files, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessory.teaser,teaser, short_description, images, videos, link, link_title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, hidden, starttime, endtime',
+            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden, title;;1, files, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessory.teaser,teaser, short_description, images, videos, link, link_title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime',
             'columnsOverrides' => [
                 'teaser' => [
                     'defaultExtras' => 'richtext:rte_transform'
@@ -258,7 +258,7 @@ return [
             'config'    => [
                 'type'                => 'select',
                 'foreign_table'       => 'tx_ecomproducttools_domain_model_accessorycategory',
-                'foregin_table_where' => 'tx_ecomproducttools_domain_model_accessorycategory.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_accessorycategory.title',
+                'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_accessorycategory.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_accessorycategory.title',
                 'minitems'            => 1
             ]
         ],
@@ -274,7 +274,14 @@ return [
                 'size'                => 10,
                 'autoSizeMax'         => 30,
                 'maxitems'            => 9999,
-                'multiple'            => 0
+                'multiple'            => 0,
+                'wizards'             => [
+                    '_POSITION' => 'top',
+                    'suggest'   => [
+                        'type'    => 'suggest',
+                        'default' => ['searchWholePhrase' => 1]
+                    ]
+                ]
             ]
         ],
 
@@ -331,19 +338,12 @@ return [
                 'default' => 0
             ]
         ],
-        'hidden'       => [
+        'hidden'    => [
             'exclude' => 1,
-            /*'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',*/
+            'label'   => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config'  => [
-                'type'  => 'check',
-                'items' => [
-                    [
-                        'LLL:EXT:lang/locallang_core.xlf:labels.hidden',
-                        1
-                    ]
-                ]
+                'type' => 'check'
             ]
         ]
-
     ]
 ];
