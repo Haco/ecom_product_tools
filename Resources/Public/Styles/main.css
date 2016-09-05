@@ -1,39 +1,13 @@
 img.flag-shadow {
 	box-shadow: 0 0 1px #808080;
 }
-
-.align-left {
-	text-align: left
-}
-.align-center {
-	text-align: center
-}
-.align-right {
-	text-align: right
-}
-.align-justify {
-	text-align: justify
-}
-.align-top {
-	vertical-align: top;
-}
-.align-mid {
-	vertical-align: middle;
-}
-.align-bot {
-	vertical-align: bottom;
-}
-.align-ttop {
-	vertical-align: text-top;
-}
-.align-tbot {
-vertical-align: text-bottom;
-}
-.align-base {
-	vertical-align: baseline;
-}
 .nowrap {
 	white-space: nowrap
+}
+#product-select select {
+    font-size: 1em;
+    color: #777;
+    font-family: "Roboto Condensed", Roboto, "Helvetica Neue", sans-serif;
 }
 .tx-ecom-product-tools select {
 	margin-right: 5px;
@@ -41,99 +15,59 @@ vertical-align: text-bottom;
 }
 .tx-ecom-product-tools #checkbox-discontinued {
 	display: block;
-	margin: 20px 0
+	margin: 20px 0;
 }
 .tx-ecom-product-tools #checkbox-discontinued.disabled {
 	filter: alpha(opactiy=40);
 	opacity: .4
 }
+.tx-ecom-product-tools #checkbox-discontinued label {
+    padding-left: 20px;
+}
 .tx-ecom-product-tools #checkbox-discontinued input {
-	margin: -4px .5em 0 0
+    position: absolute;
+    margin-left: -20px;
 }
 .tx-ecom-product-tools #ecom-product-tools-ajax-indicator {
 	display: none
 }
+.tx-ecom-product-tools #product-data a.panel-title {
+    background: #EEE;
+    padding: 13px 15px;
+    border-left: 3px solid #0083cb;
+}
+.tx-ecom-product-tools #product-data a.panel-title:hover {
+    background: #f1f1f1 !important;
+}
+.tx-ecom-product-tools #product-data a.panel-title.collapsed {
+    background: white;
+    border-left: 3px solid #DDD;
+}
+.tx-ecom-product-tools #product-data .panel-default {
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
 .tx-ecom-product-tools .panel-group .panel+.panel {
 	margin-top: 0
 }
-.tx-ecom-product-tools .panel .panel-heading {
-	padding: 0
+.tx-ecom-product-tools .panel .table {
+    margin-bottom: 0;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #ddd;
 }
-.tx-ecom-product-tools .panel .panel-heading a.panel-title {
-	background: #f0f1f1;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YwZjFmMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlNGU1ZTYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top, #f0f1f1 0, #e4e5e6 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0f1f1), color-stop(100%, #e4e5e6));
-	background: -webkit-linear-gradient(top, #f0f1f1 0, #e4e5e6 100%);
-	background: -o-linear-gradient(top, #f0f1f1 0, #e4e5e6 100%);
-	background: -ms-linear-gradient(top, #f0f1f1 0, #e4e5e6 100%);
-	background: linear-gradient(to bottom, #f0f1f1 0, #e4e5e6 100%);
-	border-bottom: 1px solid #d4d6d8;
-	color: #797f83;
-	cursor: pointer;
-	display: block;
-	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f0f1f1', endColorstr='#e4e5e6', GradientType=0);
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 20px;
-	margin-bottom: 1px;
-	padding: 14px 20px;
-	position: relative;
-	text-align: center
+.tx-ecom-product-tools .product-tools-count-files {
+    line-height: 17px;
+    margin-right: 25px;
+    color: #BBB;
 }
-.tx-ecom-product-tools .panel .panel-heading a.panel-title:hover,
-.tx-ecom-product-tools .panel .panel-heading a.panel-title:focus,
-.tx-ecom-product-tools .panel .panel-heading a.panel-title:active {
-	text-decoration: none
-}
-.tx-ecom-product-tools .panel .panel-heading a.panel-title:after {
-	background: url("../Images/accordion-arrow-up.png") no-repeat scroll 0 0 transparent;
-	content: "";
-	height: 13px;
-	position: absolute;
-	right: 20px;
-	top: 20px;
-	width: 26px
-}
-.tx-ecom-product-tools .panel .panel-heading a.panel-title.collapsed:after {
-	background: url("../Images/accordion-arrow-down.png") no-repeat scroll 0 0 transparent
-}
-.tx-ecom-product-tools .panel {
-	box-shadow: none;
-	margin-bottom: 0 !important
+.tx-ecom-product-tools .panel .table-responsive {
+    border: none;
+    margin: 0;
 }
 .tx-ecom-product-tools .panel .table thead {
 	color: gray;
 	font-size: 12px;
 	font-weight: bold
-}
-.tx-ecom-product-tools .panel .table .download-icon {
-	max-width: 2%;
-	width: 2%
-}
-.tx-ecom-product-tools .panel .table .filename {
-	max-width: 40%;
-	width: 40%
-}
-.tx-ecom-product-tools .panel .table .revision {
-	max-width: 5%;
-	width: 5%
-}
-.tx-ecom-product-tools .panel .table .size {
-	max-width: 10%;
-	width: 10%
-}
-.tx-ecom-product-tools .panel .table .last-modified {
-	max-width: 10%;
-	width: 10%
-}
-.tx-ecom-product-tools .panel .table .sha1 {
-	max-width: 23%;
-	width: 23%
-}
-.tx-ecom-product-tools .panel .table .language {
-	max-width: 10%;
-	width: 10%
 }
 .tx-ecom-product-tools .panel .table .language-information {
 	color: #a3a7a9;

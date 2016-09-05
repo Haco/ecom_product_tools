@@ -113,7 +113,7 @@ class ProductController extends ExtensionController
          * @var PageRenderer $pageRenderer
          */
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $pageRenderer->addCssFile('/typo3conf/ext/ecom_product_tools/Resources/Public/Styles/m.flags.css');
+        $pageRenderer->addCssFile('/typo3conf/ext/ecom_product_tools/Resources/Public/Styles/flags.min.css');
 
         $this->view->assign('product', $product);
         $this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findApprovalDocuments($product));

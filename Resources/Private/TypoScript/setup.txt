@@ -25,15 +25,17 @@ plugin.tx_ecomproducttools {
 #         Set global page settings         #
 ############################################
 
+[PIDinRootline = {$plugin.tx_ecomproducttools.settings.downloadcenterPid}]
+    page.includeJSFooter.mainJs = EXT:ecom_product_tools/Resources/Public/JavaScript/main.min.js
+[global]
+
 [PIDinRootline = {$plugin.tx_ecomproducttools.settings.rootLine}]
 page.includeCSSLibs {
-	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Styles/m.ept.main.css
+	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Styles/main.min.css
 }
-
 page.includeJSFooter {
-	markupJS = EXT:ecom_product_tools/Resources/Public/JavaScript/m.ept.markup.js
-	owl = EXT:ecom_product_tools/Resources/Public/JavaScript/owl.carousel.min.js
-	owl.forceOnTop = 1
+	markupJS = EXT:ecom_product_tools/Resources/Public/JavaScript/markup.min.js
+	#owl = EXT:ecom_product_tools/Resources/Public/JavaScript/owl.carousel.min.js
 }
 [global]
 

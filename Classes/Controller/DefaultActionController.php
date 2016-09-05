@@ -44,11 +44,13 @@ class DefaultActionController extends ExtensionController
         if (!CoreUtility\GeneralUtility::_POST('product') && CoreUtility\GeneralUtility::_GET('product') && MathUtility::canBeInterpretedAsInteger(CoreUtility\GeneralUtility::_GET('product'))) {
             /** @var Model\Product $product */
             $product = $this->productRepository->findByUid(MathUtility::convertToPositiveInteger(CoreUtility\GeneralUtility::_GET('product')));
-            $this->request->setArguments([
-                'division' => $product->getProductCategory()->getProductDivision(),
-                'category' => $product->getProductCategory(),
-                'product'  => $product
-            ]);
+            if ($product instanceof Model\Product) {
+                $this->request->setArguments([
+                    'division' => $product->getProductCategory()->getProductDivision(),
+                    'category' => $product->getProductCategory(),
+                    'product'  => $product
+                ]);
+            }
         }
 
         if (CoreUtility\GeneralUtility::_POST('division') && (int)CoreUtility\GeneralUtility::_POST('division') === 0) {
@@ -74,6 +76,11 @@ class DefaultActionController extends ExtensionController
      */
     public function downloadCenterAction(Model\ProductDivision $division = null, Model\ProductCategory $category = null, Model\Product $product = null, $discontinued = false)
     {
+        if (!CoreUtility\GeneralUtility::_POST('product') && CoreUtility\GeneralUtility::_GET('product') && MathUtility::canBeInterpretedAsInteger(CoreUtility\GeneralUtility::_GET('product'))) {
+            if (!$product instanceof Model\Product) {
+                $this->addFlashMessage('Product with ID: '. (int)CoreUtility\GeneralUtility::_GET('product') . ' is not available.', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING, FALSE);
+            }
+        }
         $category = $category instanceof Model\ProductCategory ? ($category->getProductDivisions()->contains($division) ? $category : null) : null;
         $product = $product instanceof Model\Product ? ($product->getProductCategories()->contains($category) ? $product : null) : null;
 
