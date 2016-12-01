@@ -33,6 +33,37 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 
 );
 
+
+#
+# Table structure for table 'tx_ecomproducttools_domain_model_softwarefile'
+#
+CREATE TABLE tx_ecomproducttools_domain_model_softwarefile (
+
+	uid int(11) NOT NULL auto_increment,
+	pid int(11) DEFAULT '0' NOT NULL,
+
+	file_reference int(11) unsigned NOT NULL default '0',
+	external_url text NOT NULL,
+	title varchar(255) DEFAULT '' NOT NULL,
+	description text NOT NULL,
+	products int(11) unsigned DEFAULT '0' NOT NULL,
+	file_categories int(11) unsigned DEFAULT '0' NOT NULL,
+
+	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
+	crdate int(11) unsigned DEFAULT '0' NOT NULL,
+	cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
+	deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	starttime int(11) unsigned DEFAULT '0' NOT NULL,
+	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+
+	sorting int(11) DEFAULT '0' NOT NULL,
+
+	PRIMARY KEY (uid),
+	KEY parent (pid)
+
+);
+
 #
 # Table structure for table 'tx_ecomproducttools_domain_model_approval'
 #
@@ -110,6 +141,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_product (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	teaser text NOT NULL,
+	software_center_description text NOT NULL,
 	image int(11) unsigned DEFAULT '0',
 	link_title varchar(255) DEFAULT '' NOT NULL,
 	link_to_page varchar(255) DEFAULT '' NOT NULL,
@@ -121,6 +153,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_product (
 	certifications int(11) unsigned DEFAULT '0' NOT NULL,
 	attestations int(11) unsigned DEFAULT '0' NOT NULL,
 	accessories int(11) unsigned DEFAULT '0' NOT NULL,
+	path_segment tinytext,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

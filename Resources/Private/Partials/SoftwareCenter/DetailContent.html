@@ -1,0 +1,108 @@
+<f:if condition="{product.softwareCenterDescription}">
+    <div class="software-center-description">
+        <h2><f:translate key="LLL:EXT:lang/locallang_tca.xlf:sys_file.description" /></h2>
+        <div class="software-center-detail-section">
+            {product.softwareCenterDescription -> f:format.html()}
+        </div>
+    </div>
+</f:if>
+
+<f:if condition="{files -> f:count()}">
+    <div class="software-center-files">
+        <h2><f:translate key="LLL:EXT:lang/locallang_common.xlf:files" /></h2>
+        <div class="software-center-detail-section">
+            <div class="table-responsive space-bottom">
+                <table class="table no-margin">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th><f:translate key="LLL:EXT:lang/locallang_tca.xlf:sys_file.type" /></th>
+                        <th><f:translate key="LLL:EXT:lang/locallang_tca.xlf:sys_file.size" /></th>
+                        <th><f:translate key="LLL:EXT:lang/locallang_mod_file_list.xlf:c_tstamp" /></th>
+                    </tr>
+                    </thead>
+                    <f:groupedFor each="{files}" as="filesByCategory" groupBy="fileCategory" groupKey="category">
+                        <tbody>
+                            <f:if condition="{category.title}">
+                                <tr class="table-category-head">
+                                    <td colspan="4">
+                                        <f:if condition="{category.title}">{category.title}</f:if>
+                                    </td>
+                                </tr>
+                            </f:if>
+                            <f:for each="{filesByCategory}" as="file" iteration="iterator">
+                                <tr class="{f:if(condition: file.hidden, then: 'software-center-file-disabled-admin')}">
+                                    <td class="software-center-files-main-column">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <f:link.action action="download" target="{f:if(condition: file.externalUrl, then: '_blank', else: '_self')}" noCacheHash="true" rel="nofollow" title="Download" arguments="{softwareFile: file}" additionalParams="{product: product.uid}">
+                                                    <span class="fa fa-download fa-lg"></span>
+                                                </f:link.action>
+                                            </div>
+                                            <div class="media-body">
+                                                <f:link.action action="download" target="{f:if(condition: file.externalUrl, then: '_blank', else: '_self')}" noCacheHash="true" rel="nofollow" title="Download" arguments="{softwareFile: file}" additionalParams="{product: product.uid}">
+                                                    Download
+                                                    <f:if condition="{file.title}">
+                                                        <f:then>
+                                                            {file.title}
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:translate key="LLL:EXT:lang/locallang_browse_links.xlf:file" />
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:link.action>
+                                                <f:if condition="{file.externalUrl}">
+                                                    <f:then>
+                                                        <small class="text-muted space-left" title="{f:translate(key: 'LLL:EXT:lang/locallang_general.xlf:LGL.external')}" style="cursor: help">
+                                                            ( <span class="fa fa-info-circle"></span> <span><f:format.crop maxCharacters="30" append="…" respectWordBoundaries="false">{f:translate(key: 'LLL:EXT:lang/locallang_general.xlf:LGL.external')}</f:format.crop></span> )
+                                                        </small>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <small class="text-muted space-left" title="{file.fileReference.originalResource.name}" style="cursor: help">
+                                                            ( <span class="fa fa-info-circle"></span> <span><f:format.crop maxCharacters="30" append="…" respectWordBoundaries="false">{file.fileReference.originalResource.name}</f:format.crop></span> )
+                                                        </small>
+                                                    </f:else>
+                                                </f:if>
+                                                <f:if condition="{file.description}">
+                                                    <div class="software-center-files-description">
+                                                        <small>
+                                                            <f:format.html>{file.description}</f:format.html>
+                                                        </small>
+                                                    </div>
+                                                </f:if>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <f:if condition="{file.fileReference.originalResource.extension}">
+                                            <f:then>
+                                                {file.fileReference.originalResource.extension}
+                                            </f:then>
+                                            <f:else>-</f:else>
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <f:if condition="{file.fileReference.originalResource.size}">
+                                            <f:then>
+                                                <f:format.bytes>{file.fileReference.originalResource.size}</f:format.bytes>
+                                            </f:then>
+                                            <f:else>-</f:else>
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <f:if condition="{file.fileReference.originalResource.modificationTime}">
+                                            <f:then>
+                                                <f:format.date format="Y-m-d">{file.fileReference.originalResource.modificationTime}</f:format.date>
+                                            </f:then>
+                                            <f:else>-</f:else>
+                                        </f:if>
+                                    </td>
+                                </tr>
+                            </f:for>
+                        </tbody>
+                    </f:groupedFor>
+                </table>
+            </div>
+        </div>
+    </div>
+</f:if>

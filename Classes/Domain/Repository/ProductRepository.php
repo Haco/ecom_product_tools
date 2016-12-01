@@ -27,6 +27,7 @@ namespace S3b0\EcomProductTools\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use Ecom\EcomToolbox\Domain\Repository\AbstractRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The repository for Products
@@ -45,22 +46,26 @@ class ProductRepository extends AbstractRepository
 
     /**
      * @param string $list
-     * @param array  $storagePids
+     * @param bool $keepListOrder
      *
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByUidList($list, array $storagePids = [])
+    public function findByUidList($list, $keepListOrder = false)
     {
+        $uidArray = GeneralUtility::intExplode(',', $list, true);
         $query = $this->createQuery();
         $query->setQuerySettings(
-            $query->getQuerySettings()
-                  ->setRespectSysLanguage(false)
-                  ->setRespectStoragePage(false)
+            $query->getQuerySettings()->setRespectSysLanguage(false)
+        );
+        $query->matching(
+            $query->in('uid', $uidArray)
         );
 
-        return $query->matching(
-            $query->in('uid', \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $list, true))
-        )->execute();
+        if ($keepListOrder) {
+            $query->setOrderings($this->orderByField('uid', $uidArray));
+        }
+
+        return $query->execute();
     }
 
     /**
@@ -88,4 +93,18 @@ class ProductRepository extends AbstractRepository
         return $query->matching($constraint)->execute();
     }
 
+    /**
+     *  Set the order method
+     *  @param string $field
+     *  @param array $values
+     *
+     *  @return array
+     */
+    protected function orderByField($field, $values) {
+        $orderings = array();
+        foreach ($values as $value) {
+            $orderings["$field={$value}"] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING;
+        }
+        return $orderings;
+    }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-12T16:38:02Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="file_reference.description">
+				<source>The file reference</source>
+			</trans-unit>
+			<trans-unit id="external_url.description">
+				<source>An external URL referencing to desired website or file</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>File title to be displayed</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+                <source>File description</source>
+            </trans-unit>
+			<trans-unit id="products.description">
+				<source>Affected products</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

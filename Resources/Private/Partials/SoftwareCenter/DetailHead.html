@@ -1,0 +1,26 @@
+<div class="software-center-detail-head-top">
+    <div class="software-center-detail-head-logo pull-left">
+        <f:if condition="{product.image}">
+            <f:image src="{product.image.uid}" width="180m" height="180m" treatIdAsReference="1" />
+        </f:if>
+    </div>
+    <div class="software-center-detail-head-info overflow-hidden">
+        <!-- Head -->
+        <div class="software-center-detail-headline">
+            <h1>{product.title}</h1>
+            <f:if condition="{0: product.atexZone} != {0: '-1'}">
+                <span class="label label-primary"><f:translate key="product.atex_zone.{product.atexZone}" /></span>
+            </f:if>
+            <f:if condition="{0: product.necDivision} != {0: '-1'}">
+                <span class="label label-primary"><f:translate key="product.nec_division.{product.necDivision}" /></span>
+            </f:if>
+        </div>
+        <f:if condition="{product.teaser}">
+            <div class="software-center-detail-teaser">
+                <span class="text-muted"><small><f:translate key="teaser.about_product" />:</small></span><br>
+                <f:format.html>{product.teaser}</f:format.html>
+            </div>
+        </f:if>
+    </div>
+</div>
+<div class="clearfix"></div>

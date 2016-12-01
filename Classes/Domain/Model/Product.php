@@ -33,6 +33,12 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    /**
+     * Hidden
+     *
+     * @var boolean
+     */
+    protected $hidden = null;
 
     /**
      * title
@@ -47,6 +53,13 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $teaser = '';
+
+    /**
+     * SoftwareCenterDescription
+     *
+     * @var string
+     */
+    protected $softwareCenterDescription = '';
 
     /**
      * image
@@ -128,6 +141,17 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $accessories = null;
 
     /**
+     * @var int $softwareFileAmount
+     */
+    protected $softwareFileAmount = 0;
+
+    /**
+     * RealUrl Path Segment
+     * @var string
+     */
+    protected $pathSegment = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -150,6 +174,16 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->certifications = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->attestations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->accessories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Returns the hidden
+     *
+     * @return boolean $hidden
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
     }
 
     /**
@@ -194,6 +228,28 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setTeaser($teaser)
     {
         $this->teaser = $teaser;
+    }
+
+    /**
+     * Returns the softwareCenterDescription
+     *
+     * @return string $softwareCenterDescription
+     */
+    public function getSoftwareCenterDescription()
+    {
+        return $this->softwareCenterDescription;
+    }
+
+    /**
+     * Sets the softwareCenterDescription
+     *
+     * @param string $softwareCenterDescription
+     *
+     * @return void
+     */
+    public function setSoftwareCenterDescription($softwareCenterDescription)
+    {
+        $this->softwareCenterDescription = $softwareCenterDescription;
     }
 
     /**
@@ -610,6 +666,32 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         }
 
         return $approvals;
+    }
+
+    /**
+     * Returns the path segment
+     * @return string
+     */
+    public function getPathSegment() {
+        return $this->pathSegment;
+    }
+
+    /**
+     * Sets the softwareFile Amount
+     *
+     * @param integer $softwareFileAmount
+     * @return void
+     */
+    public function setSoftwareFileAmount($softwareFileAmount) {
+        $this->softwareFileAmount = $softwareFileAmount;
+    }
+
+    /**
+     * Returns the softwareFile Amount
+     * @return int
+     */
+    public function getSoftwareFileAmount() {
+        return $this->softwareFileAmount;
     }
 
 }

@@ -1,0 +1,21 @@
+<f:layout name="Default" />
+<f:section name="main">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="software-center-detail-content">
+                <div class="software-center-detail-head software-center-detail-section">
+                    <f:render partial="SoftwareCenter/DetailHead" arguments="{_all}" />
+                </div>
+                <div class="software-center-detail-main">
+                    <f:render partial="SoftwareCenter/DetailContent" arguments="{_all}" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="software-center-detail-sidebar">
+                <f:render partial="SoftwareCenter/DetailSidebar" arguments="{_all}" />
+            </div>
+        </div>
+    </div>
+</f:section>

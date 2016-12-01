@@ -5,6 +5,17 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'S3b0.EcomProductTools',
+    'SoftwareCenter',
+    [
+        'SoftwareCenter' => 'list, show, download'
+    ],
+    [
+        'SoftwareCenter' => 'show, download'
+    ]
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'S3b0.EcomProductTools',
     'ListAccessory',
     ['Product' => 'listAccessory']
 );

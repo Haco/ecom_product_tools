@@ -1,0 +1,6 @@
+plugin.tx_ecomproducttools {
+	settings {
+        technicalSupportPid = 29
+        ecomLocationsPid = 127
+	}
+}

@@ -1,0 +1,54 @@
+plugin.tx_ecomproducttools {
+    settings {
+        technicalSupportPid = {$plugin.tx_ecomproducttools.settings.technicalSupportPid}
+        ecomLocationsPid = {$plugin.tx_ecomproducttools.settings.ecomLocationsPid}
+    }
+}
+
+page.includeCSS {
+	ecomsoftwarecenter = EXT:ecom_product_tools/Resources/Public/Styles/SoftwareCenter.min.css
+}
+
+# Modify Breadcrumb-Menu
+[globalVar = GP:tx_ecomproducttools_softwarecenter|product > 0]
+lib.navigations.breadcrumb.20.1.CUR.doNotLinkIt = 0
+lib.navigations.breadcrumb.35 = RECORDS
+lib.navigations.breadcrumb.35 {
+    dontCheckPid = 1
+    tables = tx_ecomproducttools_domain_model_product
+    source.data = GP:tx_ecomproducttools_softwarecenter|product
+    source.intval = 1
+    conf.tx_ecomproducttools_domain_model_product = TEXT
+    conf.tx_ecomproducttools_domain_model_product.field = title
+    conf.tx_news_domain_model_news.htmlSpecialChars = 1
+    wrap = <li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">|</li>
+}
+
+# Add Product Title to page title
+config.noPageTitle = 2
+temp.productTitle = COA
+temp.productTitle {
+    wrap = <title>|</title>
+    5 = TEXT
+    5.field = title
+    5.wrap = |
+
+    10 = RECORDS
+    10 {
+        dontCheckPid = 1
+        tables = tx_ecomproducttools_domain_model_product
+        source.data = GP:tx_ecomproducttools_softwarecenter|product
+        source.intval = 1
+        conf.tx_ecomproducttools_domain_model_product = TEXT
+        conf.tx_ecomproducttools_domain_model_product {
+            field = title
+            htmlSpecialChars = 1
+            stdWrap.noTrimWrap = |: ||
+            stdWrap.required = 1
+        }
+    }
+}
+
+page.headerData.1391075689 >
+page.headerData.3231 < temp.productTitle
+[global]

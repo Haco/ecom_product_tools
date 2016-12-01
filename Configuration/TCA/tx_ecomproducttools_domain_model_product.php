@@ -29,30 +29,36 @@ return [
             'default' => 'ecom-product-0',
             'mask'    => 'ecom-product-###TYPE###'
         ],
-        'searchFields'             => 'title,teaser,link_title,link_to_page,discontinued,excluded_in_download_center,atex_zone,nec_division,product_categories,certifications,attestations,accessories,',
+        'searchFields'             => 'title,teaser,software_center_description,link_title,link_to_page,discontinued,excluded_in_download_center,atex_zone,nec_division,product_categories,certifications,attestations,accessories,',
         'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_product.png'
     ],
-    'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, image, link_title, link_to_page, discontinued, excluded_in_download_center, product_categories, certifications, attestations, accessories'],
+    'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser,software_center_description, image, link_title, link_to_page, discontinued, excluded_in_download_center, product_categories, certifications, attestations, accessories,path_segment'],
     'types'     => [
         '1' => [
-            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, product_categories, accessories, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.teaser,teaser, image, link_title, link_to_page, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval,certifications, attestations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime',
+            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, --palette--;Options;2, palette;;1, product_categories, accessories, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.teaser,teaser, image, link_title, link_to_page, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval,certifications, attestations,--div--;Software Center, path_segment, software_center_description, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime',
             'columnsOverrides' => [
                 'teaser' => [
-                    'defaultExtras' => 'richtext:rte_transform'
+                    'defaultExtras' => 'richtext:rte_transform[mode=ts_css]'
+                ],
+                'software_center_description' => [
+                    'defaultExtras' => 'richtext:rte_transform[mode=ts_css]'
                 ]
             ]
         ]
     ],
     'palettes'  => [
-        '1' => ['showitem'       => 'atex_zone, nec_division, discontinued, excluded_in_download_center, hidden',
+        '1' => ['showitem'       => 'title, atex_zone, nec_division',
                 'canNotCollapse' => true
+        ],
+        '2' => ['showitem'       => 'hidden, discontinued, excluded_in_download_center',
+            'canNotCollapse' => true
         ]
     ],
     'columns'   => [
 
         'sys_language_uid' => [
             'exclude' => 1,
-            'label'   => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
+            /*'label'   => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',*/
             'config'  => [
                 'type'                => 'select',
                 'foreign_table'       => 'sys_language',
@@ -113,15 +119,18 @@ return [
 
         'title'              => [
             'exclude' => 1,
+            'l10n_mode' => 'mergeIfNotBlank',
             'label'   => "{$locallang}tx_ecomproducttools_domain_model_product.title",
             'config'  => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim',
+                'placeholder' => '__row|l10n_parent|title'
             ]
         ],
         'teaser'             => [
             'exclude' => 1,
+            'l10n_mode' => 'prefixLangTitle',
             /*'displayCond' => 'FIELD:discontinued:=:0',*/
             'label'   => "{$locallang}tx_ecomproducttools_domain_model_product.teaser",
             'config'  => [
@@ -129,20 +138,17 @@ return [
                 'cols'    => 40,
                 'rows'    => 15,
                 'eval'    => 'trim',
-                'wizards' => [
-                    '_PADDING' => 4,
-                    '_VALIGN'  => 'middle',
-                    'RTE'      => [
-                        'notNewRecords' => 1,
-                        'RTEonly'       => 1,
-                        'type'          => 'script',
-                        'title'         => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
-                        'icon'          => 'wizard_rte2.gif',
-                        'module'        => [
-                            'name' => 'wizard_rte'
-                        ]
-                    ]
-                ]
+            ]
+        ],
+        'software_center_description'             => [
+            'exclude' => 1,
+            'l10n_mode' => 'prefixLangTitle',
+            'label'   => "Software Center Description",
+            'config'  => [
+                'type'    => 'text',
+                'cols'    => 40,
+                'rows'    => 15,
+                'eval'    => 'trim',
             ]
         ],
         'image'              => [
@@ -195,7 +201,7 @@ return [
             'exclude'   => 1,
             'l10n_mode' => 'prefixLangTitle',
             /*'displayCond' => 'FIELD:discontinued:=:0',*/
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.link_title",
+            'label'     => 'Custom Link Title',
             'config'    => [
                 'type' => 'input',
                 'size' => 30,
@@ -318,6 +324,16 @@ return [
             ]
         ],
 
+        'path_segment' => [
+            'exclude' => 1,
+            'l10n_mode'   => 'exclude',
+            'label' => 'URL Path Segment (e.g: smart-ex-01)',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'nospace,alphanum_x,lower,unique',
+            ]
+        ],
 
         'atex_zone'                   => [
             'exclude'     => 1,
@@ -391,12 +407,12 @@ return [
         ],
         'hidden'                      => [
             'exclude' => 1,
-            /*'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',*/
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config'  => [
                 'type'  => 'check',
                 'items' => [
                     [
-                        'LLL:EXT:lang/locallang_core.xlf:labels.hidden',
+                        'Hide Product',
                         1
                     ]
                 ]

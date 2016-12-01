@@ -3,6 +3,15 @@ defined('TYPO3_MODE') or die('Access denied.');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'ecom_product_tools',
+    'SoftwareCenter',
+    'Product Tools: Software-Center'
+);
+
+$TCA[ 'tt_content' ][ 'types' ][ 'list' ][ 'subtypes_addlist' ][ 'ecomproducttools_softwarecenter' ] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('ecomproducttools_softwarecenter', 'FILE:EXT:ecom_product_tools/Configuration/FlexForms/flexform_softwarecenter.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'ecom_product_tools',
     'ListAccessory',
     'Product Tools: Accessory Page'
 );
@@ -45,7 +54,9 @@ $TCA[ 'tt_content' ][ 'types' ][ 'list' ][ 'subtypes_addlist' ][ 'ecomproducttoo
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ecom_product_tools', 'Resources/Private/TypoScript', 'ecom Product Tools');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ecom_product_tools', 'Resources/Private/TypoScript/SoftwareCenter', 'ecom Product Tools: Software-Center');
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_softwarefile', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_softwarefile.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_approval', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_approval.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_certification', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_certification.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_file', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_file.xlf');

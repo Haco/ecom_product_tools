@@ -86,13 +86,13 @@ class ModifyTCA
     }
 
     /**
-     * labelUserFuncTxEcompcDomainModelOption function.
-     *
-     * @param array $PA
-     * @param mixed $pObj
-     *
-     * @return void
-     */
+ * labelUserFuncTxEcompcDomainModelOption function.
+ *
+ * @param array $PA
+ * @param mixed $pObj
+ *
+ * @return void
+ */
     public function labelUserFuncEPTDomainModelFile(array &$PA, $pObj = null)
     {
         $row = BackendUtility::getRecord($PA[ 'table' ], (int)$PA[ 'row' ][ 'uid' ]);
@@ -120,6 +120,33 @@ class ModifyTCA
         } else {
             $PA[ 'title' ] .= ucfirst(LocalizationUtility::translate('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.language.I.0', 'ecomProductTools'));
         }
+    }
+
+    /**
+     * SoftwareFileLabel TCA
+     *
+     * @param array $PA
+     * @param mixed $pObj
+     *
+     * @return void
+     */
+    public function softwareFileLabel(array &$PA, $pObj = null)
+    {
+        $row = BackendUtility::getRecord($PA[ 'table' ], (int)$PA[ 'row' ][ 'uid' ]);
+        $title = $row[ 'title' ];
+        $appendTitle = '';
+
+        if ($row[ 'external_url' ]) {
+            $appendTitle = 'URL: ' . reset(GeneralUtility::unQuoteFilenames($row[ 'external_url' ]));
+        } elseif ($row[ 'file_reference' ]) {
+            $fileReference = BackendUtility::getRecordRaw('sys_file_reference', "tablenames=\"{$PA[ 'table' ]}\" AND fieldname=\"file_reference\" AND uid_foreign={$row[ 'uid' ]}");
+            $file = BackendUtility::getRecord('sys_file', $fileReference[ 'uid_local' ]);
+            $appendTitle = 'FILE: ' . $file[ 'name' ];
+        }
+        if ($appendTitle != '') {
+            $title .= ' ['. $appendTitle . ']';
+        }
+        $PA[ 'title' ] = $title;
     }
 
     /**

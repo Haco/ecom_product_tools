@@ -1,0 +1,37 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Plugin-Configuration</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.products>
+						<TCEforms>
+							<label>Select the products to list in the Software-Center</label>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_ecomproducttools_domain_model_product</foreign_table>
+								<foreign_table_where>AND tx_ecomproducttools_domain_model_product.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_product.title</foreign_table_where>
+								<size>20</size>
+								<autoSizeMax>30</autoSizeMax>
+								<maxitems>9999</maxitems>
+								<minitems>1</minitems>
+                                <wizards>
+                                    <_POSITION>top</_POSITION>
+                                    <suggest>
+                                        <type>suggest</type>
+                                    </suggest>
+                                </wizards>
+							</config>
+						</TCEforms>
+					</settings.products>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

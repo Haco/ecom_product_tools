@@ -18,6 +18,7 @@ plugin.tx_ecomproducttools {
 	settings {
 		decimalSeparator = .
 		thousandsSeparator = ,
+        downloadcenterPid = {$plugin.tx_ecomproducttools.settings.downloadcenterPid}
 	}
 }
 

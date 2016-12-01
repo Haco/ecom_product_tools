@@ -1,0 +1,35 @@
+<div class="software-center-grid-item {f:if(condition: noPathSet, then: 'no-url-path-set')} ">
+    <f:link.action action="show" noCacheHash="true" arguments="{product: product}" class="software-center-grid-item-link" />
+
+    <f:be.security.ifAuthenticated>
+        <div class="software-center-be-info-labels">
+            <f:if condition="{product.hidden}">
+                <span class="label label-danger">Hidden</span>
+            </f:if>
+            <f:if condition="{noPathSet}">
+                <span class="label label-danger">No URL-Path set</span>
+            </f:if>
+        </div>
+    </f:be.security.ifAuthenticated>
+
+    <div class="software-center-grid-item-content">
+        <div class="software-center-grid-item-cover">
+            <f:link.action action="show" noCacheHash="true" arguments="{product: product}" class="software-center-grid-item-link" />
+            <div class="software-center-grid-item-cover-inner">
+                <f:if condition="{product.image}">
+                    <f:image src="{product.image.uid}" width="128m" height="128m" class="hidden-xs" treatIdAsReference="1" />
+                    <f:image src="{product.image.uid}" width="96m" height="96m" class="visible-xs-inline" treatIdAsReference="1" />
+                </f:if>
+            </div>
+        </div>
+        <div class="software-center-grid-item-details">
+            <header>
+                <span class="paragraph-end"></span>
+                <h5><f:link.action action="show" noCacheHash="true" arguments="{product: product}">{product.title}</f:link.action></h5>
+            </header>
+            <h4><small>
+                <f:translate id="LLL:EXT:lang/locallang_core.xlf:file_upload.php.files" default="Files" />: {product.softwareFileAmount} </small>
+            </h4>
+        </div>
+    </div>
+</div>

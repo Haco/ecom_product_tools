@@ -45,6 +45,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_product.accessories">
 				<source>Accessories</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.path_segment">
+				<source>URL Path Segment</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file">
 				<source>File</source>
 			</trans-unit>
@@ -87,6 +90,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_file.file_categories">
 				<source>File Category</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_softwarefile">
+                <source>Software-Center: File</source>
+            </trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_productdivision">
 				<source>Product Division</source>
 			</trans-unit>

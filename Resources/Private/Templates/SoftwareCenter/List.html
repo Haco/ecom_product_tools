@@ -1,0 +1,33 @@
+<f:layout name="Default" />
+<f:section name="main">
+    <f:be.security.ifAuthenticated>
+        <f:if condition="{noUrlPathSetForProducts -> f:count()}">
+            <div class="alert alert-danger">
+                <strong>ADMIN Message: No speaking-URL path set for the following products:</strong><br>
+                <f:for each="{noUrlPathSetForProducts}" as="hiddenProduct">
+                    {hiddenProduct.title},
+                </f:for>
+                <br><br>
+                <p>Important: Please set the "Speaking URL Path segment" in the product settings. E.g: "smart-ex-01" or "iroc-ci70-ex"</p>
+            </div>
+        </f:if>
+    </f:be.security.ifAuthenticated>
+
+    <f:if condition="{products -> f:count()}">
+        <div class="software-center-product-grid">
+            <f:for each="{products}" as="product" iteration="iterator">
+                <f:if condition="{product.pathSegment}">
+                    <f:then>
+                        <f:render partial="SoftwareCenter/Card" arguments="{product: product, iterator: iterator}" />
+                    </f:then>
+                    <f:else>
+                        <f:be.security.ifAuthenticated>
+                            <f:render partial="SoftwareCenter/Card" arguments="{product: product, iterator: iterator, noPathSet:1}" />
+                        </f:be.security.ifAuthenticated>
+                    </f:else>
+                </f:if>
+            </f:for>
+            <div class="clearfix"></div>
+        </div>
+    </f:if>
+</f:section>
