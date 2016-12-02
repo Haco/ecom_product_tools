@@ -182,7 +182,8 @@ class SoftwareCenterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     $this->addFlashMessage('The requested file is not available anymore.','', AbstractMessage::WARNING, true);
                     $this->redirectToUri($this->uriBuilder->setUseCacheHash(false)->uriFor('show', ['product' => $product]));
                 } else {
-                    $this->redirectToUri($this->uriBuilder->uriFor('list'));
+                    $this->addFlashMessage('The requested file is not available anymore.','', AbstractMessage::WARNING, true);
+                    $this->forward('list');
                 }
             }
         }
