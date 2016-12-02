@@ -21,9 +21,11 @@
                         <f:render partial="SoftwareCenter/Card" arguments="{product: product, iterator: iterator}" />
                     </f:then>
                     <f:else>
-                        <f:be.security.ifAuthenticated>
-                            <f:render partial="SoftwareCenter/Card" arguments="{product: product, iterator: iterator, noPathSet:1}" />
-                        </f:be.security.ifAuthenticated>
+                        <f:comment>
+                            <f:be.security.ifAuthenticated>
+                                <f:render partial="SoftwareCenter/Card" arguments="{product: product, iterator: iterator, noPathSet:1}" />
+                            </f:be.security.ifAuthenticated>
+                        </f:comment>
                     </f:else>
                 </f:if>
             </f:for>
