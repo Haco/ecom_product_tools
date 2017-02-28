@@ -78,6 +78,9 @@
 			<trans-unit id="product.atex_zone.5" xml:space="preserve">
 				<source>Zone 2/22</source>
 			</trans-unit>
+			<trans-unit id="product.atex_zone.6" xml:space="preserve">
+				<source>Mining</source>
+			</trans-unit>
 			<trans-unit id="product.nec_division.0" xml:space="preserve">
 				<source>Division 0</source>
 			</trans-unit>
