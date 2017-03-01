@@ -1,20 +1,30 @@
 <f:if condition="{categories}">
-	<div class="tx-ecomproducttools-accessory-list">
-		<f:for each="{categories}" as="category">
-			<f:if condition="{category.accessories}">
-				<h2 class="text-primary text-uppercase border-bottom margin">{category.title}</h2>
-				<f:for each="{category.accessories}" as="accessory" iteration="iterator">
-					<f:if condition="{iterator.index} % 4">
-						<f:then></f:then>
-						<f:else><div class="row"></f:else>
-					</f:if>
-					<f:render partial="Accessory/Card" arguments="{accessory: accessory}" />
-					<f:if condition="{iterator.cycle} % 4">
-						<f:then><f:if condition="{iterator.isLast}"></div></f:if></f:then>
-						<f:else></div><f:if condition="{iterator.isLast} == 0"><hr /></f:if></f:else>
-					</f:if>
-				</f:for>
-			</f:if>
-		</f:for>
-	</div>
+    <div class="tx-ecomproducttools-accessory-list">
+        <f:for each="{categories}" as="category">
+            <f:if condition="{category.accessories}">
+                <h2 class="text-primary text-uppercase border-bottom margin">{category.title}</h2>
+                <f:for each="{category.accessories}" as="accessory" iteration="iterator">
+                    <f:if condition="{iterator.index} % 4">
+                        <f:then></f:then>
+                        <f:else><div class="row"></f:else>
+                    </f:if>
+                    <f:render partial="Accessory/Card" arguments="{accessory: accessory}" />
+                    <f:if condition="{iterator.cycle} % 4">
+                        <f:then><f:if condition="{iterator.isLast}"></div></f:if></f:then>
+                        <f:else></div><f:if condition="{iterator.isLast} == 0"><hr /></f:if></f:else>
+                    </f:if>
+                </f:for>
+            </f:if>
+        </f:for>
+
+        <script type="text/javascript" rel="javascript">
+            (function($) {
+                $('.tx-ecomproducttools-accessory-list .ce-gallery').each(function() {
+                    if ($(this).find('.ce-column').length > 1) {
+                        $(this).find('.ce-column').slice(1).hide();
+                    }
+                });
+            })(jQuery);
+        </script>
+    </div>
 </f:if>
