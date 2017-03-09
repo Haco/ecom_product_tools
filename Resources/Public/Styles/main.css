@@ -7,11 +7,10 @@ img.flag-shadow {
 #product-select select {
     font-size: 1em;
     color: #777;
-    font-family: "Roboto Condensed", Roboto, "Helvetica Neue", sans-serif;
 }
-.tx-ecom-product-tools select {
+.tx-ecom-product-tools select.form-control {
 	margin-right: 5px;
-	min-width: 200px
+	min-width: 200px;
 }
 .tx-ecom-product-tools #checkbox-discontinued {
 	display: block;
