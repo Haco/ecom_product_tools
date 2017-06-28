@@ -48,6 +48,13 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $title = '';
 
     /**
+     * ArticleNo
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ArticleNo>
+     */
+    protected $articleNo = null;
+
+    /**
      * teaser
      *
      * @var string
@@ -174,6 +181,7 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->certifications = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->attestations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->accessories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->articleNo = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -206,6 +214,52 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * Adds an article No
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\ArticleNo $articleNo
+     *
+     * @return void
+     */
+    public function addArticleNo(\S3b0\EcomProductTools\Domain\Model\ArticleNo $articleNo)
+    {
+        $this->articleNo->attach($articleNo);
+    }
+
+    /**
+     * Removes an articleNo
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\ArticleNo $articleNoToRemove The articleNo to be removed
+     *
+     * @return void
+     */
+    public function removeArticleNo(\S3b0\EcomProductTools\Domain\Model\ArticleNo $articleNoToRemove)
+    {
+        $this->articleNo->detach($articleNoToRemove);
+    }
+
+    /**
+     * Returns the articleNo
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ArticleNo> $articleNo
+     */
+    public function getArticleNo()
+    {
+        return $this->articleNo;
+    }
+
+    /**
+     * Sets the articleNo
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ArticleNo> $articleNo
+     *
+     * @return void
+     */
+    public function setArticleNo(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $articleNo)
+    {
+        $this->articleNo = $articleNo;
     }
 
     /**

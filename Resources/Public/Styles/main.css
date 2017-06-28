@@ -191,3 +191,21 @@ img.flag-shadow {
 .tx-ecom-product-tools.certifications .dropdown-menu li a:focus {
 	color: #0083cb
 }
+
+/**
+    Article No List - Mini Gallery - One-Pager
+*/
+.miniGallery .tx-product-article-no-list {
+    background: #eee;
+    padding: 10px;
+    font-size: 0.85em;
+    margin-top: 20px;
+}
+.miniGallery .tx-product-article-no-list > span {
+    letter-spacing: 1px;
+    color: #999;
+}
+.miniGallery .tx-product-article-no-list > span.hasTitle:hover {
+    cursor: help;
+    color: #666;
+}
