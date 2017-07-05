@@ -31,7 +31,7 @@ plugin.tx_ecomproducttools {
 [global]
 
 [PIDinRootline = {$plugin.tx_ecomproducttools.settings.rootLine}]
-page.includeCSSLibs {
+page.includeCSS {
 	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Styles/main.min.css
 }
 page.includeJSFooter {
