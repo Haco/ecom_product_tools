@@ -24,8 +24,8 @@
 			<div class="app-lib-app-qv-cover-outer-align">
 				<div class="app-lib-app-qv-cover-inner-align">
 					<f:if condition="{product.image}">
-						<f:image src="{product.image.uid}" width="128m" height="128m" class="hidden-xs" treatIdAsReference="1" />
-						<f:image src="{product.image.uid}" width="96m" height="96m" class="visible-xs-inline" treatIdAsReference="1" />
+                        <img class="hidden-xs js-lazyimg" data-src="{f:uri.image(src: product.image.uid, width: '128m', height: '128m', treatIdAsReference: 1)}" />
+                        <img class="visible-xs-inline js-lazyimg" data-src="{f:uri.image(src: product.image.uid, width: '96m', height: '96m', treatIdAsReference: 1)}" />
 					</f:if>
 				</div>
 			</div>
